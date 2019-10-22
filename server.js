@@ -138,14 +138,17 @@ app.get("/notes/:id", function(req, res) {
 //https://docs.mongodb.com/manual/reference/operator/update/pull/#up._S_pull
 //{ $pull: { <field1>: <value|condition>, <field2>: <value|condition>, ... } }
 
-app.delete("/notes:id", function(req, res) {
+app.delete("/notes/:id", function(req, res) {
   db.Note
     .remove(
       { _id: req.params.id }
     )
     .then(function(dbNote){
       res.json(dbNote);
-    });
+    })
+    .catch(function(err) {
+      console.log(err)
+    })
 });
 
 app.listen(PORT, function() {

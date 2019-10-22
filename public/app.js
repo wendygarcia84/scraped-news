@@ -85,6 +85,7 @@ $.getJSON("/articles", function(data) {
       url: "/notes/" + thisId,
     }).then(function(data) {
         console.log("Deleted", data)
+        location.reload();
     })
       .catch(function (err) {
         console.log(err);
